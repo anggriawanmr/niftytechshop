@@ -5,13 +5,13 @@ export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
       case 'core/heading': {
-        return <Heading key={block.id}></Heading>;
+        return <Heading key={block.id} />;
       }
       case 'core/cover': {
         console.log('Block: ', block);
         return (
           <Cover key={block.id} background={block.attributes.url}>
-            core cover
+            <BlockRenderer blocks={block.innerBlocks} />
           </Cover>
         );
       }
