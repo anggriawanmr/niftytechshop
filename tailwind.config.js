@@ -1,15 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./utils/**/*.js",
+    './src/common/components/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './common/**/*.{js,ts,jsx,tsx}',
+    './utils/**/*.js',
+    './src/**/*.{html,js, jsx, tsx}',
   ],
   theme: {
     extend: {
       fontFamily: {
-        heading: ["Aboreto", "cursive"],
-        body: ["Poppins", "sans-serif"],
+        heading: ['Aboreto', 'cursive'],
+        body: ['Poppins', 'sans-serif'],
       },
     },
   },

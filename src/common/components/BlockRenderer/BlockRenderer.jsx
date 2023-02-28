@@ -5,7 +5,7 @@ export const BlockRenderer = ({ blocks }) => {
     switch (block.name) {
       case 'core/cover': {
         return (
-          <Cover key={block.id} background={block.attribute.url}>
+          <Cover key={block.id} background={block.attributes.url}>
             core cover
           </Cover>
         );
