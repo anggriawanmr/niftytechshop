@@ -4,11 +4,13 @@ import { BlockRenderer } from 'src/common/components/BlockRenderer';
 
 import client from '../../client';
 import { mapMainMenuItems } from 'src/common/utils/mapMainMenuItems';
+import { MainMenu } from 'src/common/components/MainMenu';
 
 export default function Home(props) {
   console.log('Props: ', props);
   return (
     <div>
+      <MainMenu items={props.mainMenuItems} />
       <BlockRenderer blocks={props.blocks} />
     </div>
   );
