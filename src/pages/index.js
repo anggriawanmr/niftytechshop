@@ -3,6 +3,7 @@ import { cleanAndTransformBlocks } from 'src/common/utils/cleanAndTransformBlock
 import { BlockRenderer } from 'src/common/components/BlockRenderer';
 
 import client from '../../client';
+import { mapMainMenuItems } from 'src/common/utils/mapMainMenuItems';
 
 export default function Home(props) {
   console.log('Props: ', props);
@@ -16,12 +17,35 @@ export default function Home(props) {
 export const getStaticProps = async () => {
   const { data } = await client.query({
     query: gql`
-      query NewQuery {
+      query PageQuery {
         nodeByUri(uri: "/") {
           ... on Page {
             id
             title
             blocksJSON
+          }
+        }
+
+        acfOptionsMainMenu {
+          mainMenu {
+            menuItems {
+              menuItems {
+                destination {
+                  ... on Page {
+                    uri
+                  }
+                }
+                label
+              }
+              items {
+                destination {
+                  ... on Page {
+                    uri
+                  }
+                }
+                label
+              }
+            }
           }
         }
       }
@@ -32,6 +56,9 @@ export const getStaticProps = async () => {
 
   return {
     props: {
+      mainMenuItems: mapMainMenuItems(
+        data.acfOptionsMainMenu.mainMenu.menuItems
+      ),
       blocks,
     },
   };
