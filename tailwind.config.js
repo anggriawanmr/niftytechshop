@@ -2,9 +2,8 @@
 module.exports = {
   content: [
     './src/common/components/**/*.{js,ts,jsx,tsx}',
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './common/**/*.{js,ts,jsx,tsx}',
-    './utils/**/*.js',
+    './src/common/**/*.{js,ts,jsx,tsx}',
+    './src/common/pages/*.{js,ts,jsx,tsx}',
     './src/**/*.{html,js, jsx, tsx}',
   ],
   theme: {
