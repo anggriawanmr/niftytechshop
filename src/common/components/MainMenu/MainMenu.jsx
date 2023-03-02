@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import { HiOutlineDesktopComputer } from 'react-icons/hi';
+import { ButtonLink } from '../ButtonLink';
 
-export const MainMenu = ({ items }) => {
+export const MainMenu = ({
+  items,
+  callToActionLabel,
+  callToActionDestination,
+}) => {
   console.log('Main Menu: ', items);
   return (
     <div className="bg-slate-800 text-white px-5 h-[64px] sticky top-0 z-20 flex">
@@ -32,6 +37,12 @@ export const MainMenu = ({ items }) => {
             )}
           </div>
         ))}
+        <div className="ml-3 my-auto">
+          <ButtonLink
+            destination={callToActionDestination}
+            label={callToActionLabel}
+          />
+        </div>
       </div>
     </div>
   );
