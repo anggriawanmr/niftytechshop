@@ -1,6 +1,7 @@
 import { theme } from 'theme';
 import { CallToActionButton } from '../CallToActionButton';
 import { Columns } from '../Columns';
+import { Column } from '../Column';
 import { Cover } from '../Cover';
 import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
@@ -54,7 +55,16 @@ export const BlockRenderer = ({ blocks }) => {
           <Columns
             key={block.id}
             stackOnMovile={block.attributes.isStackedOnMobile}
-          ></Columns>
+          >
+            <BlockRenderer blocks={block.innerBlocks} />
+          </Columns>
+        );
+      }
+      case 'core/column': {
+        return (
+          <Column key={block.id} width={block.attributes.width}>
+            <BlockRenderer blocks={block.innerBlocks} />
+          </Column>
         );
       }
       default:
