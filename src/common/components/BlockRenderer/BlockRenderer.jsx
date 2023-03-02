@@ -1,4 +1,5 @@
 import { theme } from 'theme';
+import { CallToActionButton } from '../CallToActionButton';
 import { Cover } from '../Cover';
 import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
@@ -6,6 +7,16 @@ import { Paragraph } from '../Paragraph';
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
+      case 'acf/ctabutton': {
+        return (
+          <CallToActionButton
+            key={block.id}
+            buttonLabel={block.attributes.data.label}
+            destination={block.attributes.data.destination || '/'}
+            align={block.attributes.data.align}
+          />
+        );
+      }
       case 'core/paragraph': {
         return (
           <Paragraph
@@ -38,6 +49,7 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       default:
+        console.log('UNKNOWN: ', block);
         return null;
     }
   });
