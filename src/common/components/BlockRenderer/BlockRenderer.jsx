@@ -7,6 +7,7 @@ import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
 import Image from 'next/image';
 import { PostTitle } from '../PostTitle';
+import { ProductSearch } from '../ProductSearch';
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
@@ -52,6 +53,9 @@ export const BlockRenderer = ({ blocks }) => {
             textAlign={block.attributes.textAlign}
           />
         );
+      }
+      case 'acf/productsearch': {
+        return <ProductSearch key={block.id} />;
       }
       case 'core/cover': {
         console.log('Cover Block: ', block);
