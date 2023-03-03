@@ -6,6 +6,7 @@ import { Cover } from '../Cover';
 import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
 import Image from 'next/image';
+import { PostTitle } from '../PostTitle';
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
@@ -39,6 +40,15 @@ export const BlockRenderer = ({ blocks }) => {
             key={block.id}
             level={block.attributes.level}
             content={block.attributes.content}
+            textAlign={block.attributes.textAlign}
+          />
+        );
+      }
+      case 'core/post-title': {
+        return (
+          <PostTitle
+            key={block.id}
+            level={block.attributes.level}
             textAlign={block.attributes.textAlign}
           />
         );

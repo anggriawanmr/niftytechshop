@@ -5,7 +5,9 @@ import { PageWrapper } from 'src/context/page';
 export const Page = (props) => {
   console.log('Page Props: ', props);
   return (
-    <PageWrapper value={{ featuredImage: props.featuredImage }}>
+    <PageWrapper
+      value={{ title: props.title, featuredImage: props.featuredImage }}
+    >
       <MainMenu
         items={props.mainMenuItems}
         callToActionLabel={props.callToActionLabel}
