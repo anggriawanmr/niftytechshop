@@ -14,6 +14,7 @@ const handler = async (req, res) => {
               featuredImage {
                 node {
                   uri
+                  sourceUrl
                 }
               }
               productFeatures {
