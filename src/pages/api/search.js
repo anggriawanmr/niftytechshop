@@ -6,7 +6,12 @@ const handler = async (req, res) => {
     const { data } = await client.query({
       query: gql`
         query MainMenuQuery {
-          products {
+          products(where: { offsetPagination: { offset: 0, size: 3 } }) {
+            pageInfo {
+              offsetPagination {
+                total
+              }
+            }
             nodes {
               databaseId
               title
@@ -29,6 +34,7 @@ const handler = async (req, res) => {
       `,
     });
     return res.status(200).json({
+      total: data.products.pageInfo.offsetPagination.total,
       products: data.products.nodes,
     });
   } catch (error) {
