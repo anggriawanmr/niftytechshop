@@ -3,10 +3,14 @@ import client from 'client';
 
 const handler = async (req, res) => {
   try {
+    const filters = JSON.parse(req.body);
+
     const { data } = await client.query({
       query: gql`
         query MainMenuQuery {
-          products(where: { offsetPagination: { offset: 0, size: 3 } }) {
+          products(where: { offsetPagination: {size:  3, offset: ${
+            ((filters.page || 1) - 1) * 3
+          } } }) {
             pageInfo {
               offsetPagination {
                 total
